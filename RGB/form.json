@@ -51,7 +51,7 @@
         "actions": [{
             "type": "Button",
             "label": "Update",
-            "onClick": "DMXDYN_DeleteObject();"
+            "onClick": "DMXRGBN_DeleteObject();"
         }]
     }]
 }
