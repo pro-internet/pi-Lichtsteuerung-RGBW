@@ -184,6 +184,8 @@
                     $ObjektID = @IPS_GetObjectIDByName($device->Name, $fatherParent);
 
                     $deviceProp = IPS_GetObject($ObjektID);
+                    
+                    print_r($deviceProp['ChildrenIDs']);
 
                     $getSwitch = $deviceProp['ChildrenIDs'][4];
                     $Switch = GetValue($getSwitch);
