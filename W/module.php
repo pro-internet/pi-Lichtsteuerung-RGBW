@@ -188,7 +188,7 @@
                     $getSwitch = $deviceProp['ChildrenIDs'][4];
                     $Switch = GetValue($getSwitch);
 
-                    $getDevice = IPS_GetParent($device->RChannel);
+                    $getDevice = IPS_GetParent($device->WChannel);
 
                     $getValueChannelW = GetValue($device->WChannel);
 
@@ -335,7 +335,7 @@
 
            // Get Channel Values
            $getValueChannelW = GetValue($getChannelW);
-           $getDevice        = IPS_GetParent($getValueChannelR);
+           $getDevice        = IPS_GetParent($getValueChannelW);
 
            // Get Ident 
            $channelObjectW = IPS_GetObject($getValueChannelW);
