@@ -20,26 +20,8 @@
                 }
             },
             {
-                "label": "R-Channel",
-                "name": "RChannel",
-                "width": "75px",
-                "add": 0,
-                "edit": {
-                    "type": "SelectVariable"
-                }
-            },
-            {
-                "label": "G-Channel",
-                "name": "GChannel",
-                "width": "75px",
-                "add": 0,
-                "edit": {
-                    "type": "SelectVariable"
-                }
-            },
-            {
-                "label": "B-Channel",
-                "name": "BChannel",
+                "label": "W-Channel",
+                "name": "WChannel",
                 "width": "75px",
                 "add": 0,
                 "edit": {
@@ -51,7 +33,7 @@
         "actions": [{
             "type": "Button",
             "label": "Update",
-            "onClick": "DMXDYN_DeleteObject();"
+            "onClick": "DMXW_DeleteObject();"
         }]
     }]
 }
