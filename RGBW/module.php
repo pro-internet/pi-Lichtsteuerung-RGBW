@@ -84,7 +84,7 @@
 
             // On Apply read Device List
             $deviceList = json_decode($this->ReadPropertyString("Lichter"));
-            print_r($deviceList);
+            //print_r($deviceList);
             
             if (is_array($deviceList) || is_object($deviceList)){
                 foreach($deviceList as $i => $list){
@@ -110,6 +110,7 @@
                     $B = $array['BChannel'];
                     $W = $array['WChannel'];
                     $S = $array['Name'];
+                    print_r($S);
 
                     $isEmpty = @IPS_GetObjectIDByIdent("R", $insID);
                     if(!empty($isEmpty)){
