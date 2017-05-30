@@ -1,0 +1,13 @@
+{
+    "id": "{1b449009-8f82-4ce3-acac-42f19839f731}",
+    "name": "Lichtsteuerung W",
+    "type": 3,
+    "vendor": "prointernet",
+    "aliases": [
+        "Lichtsteuerung W"
+    ],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "DMXW"
+}
