@@ -2,7 +2,7 @@
     "elements": [{
         "type": "List",
         "name": "Lichter",
-        "caption": "Lichter:",
+        "caption": "Räume:",
         "rowCount": 8,
         "columnCount": 12,
         "add": true,
