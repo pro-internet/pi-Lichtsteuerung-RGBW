@@ -3,7 +3,8 @@
         "type": "List",
         "name": "Lichter",
         "caption": "Lichter:",
-        "rowCount": 5,
+        "rowCount": 8,
+        "columnCount": 12,
         "add": true,
         "delete": true,
         "sort": {
@@ -17,6 +18,15 @@
                 "add": "",
                 "edit": {
                     "type": "ValidationTextBox"
+                }
+            },
+            {
+                "label": "Sortierung",
+                "name": "Sort",
+                "width": "75px",
+                "add": 1,
+                "edit": {
+                    "type": "NumberSpinner"
                 }
             },
             {

@@ -110,6 +110,7 @@
                     $B = $array['BChannel'];
                     $W = $array['WChannel'];
                     $S = $array['Name'];
+                    $P = $array['Sort'];
 
                     $isEmpty = @IPS_GetObjectIDByIdent("R", $insID);
                     if(!empty($isEmpty)){
@@ -132,6 +133,9 @@
                     $vid = $this->CreateVariable(1,"G", "G", $insID, 2, $G, "DMX.Channel", $svs, TRUE);
                     $vid = $this->CreateVariable(1,"B", "B", $insID, 3, $B, "DMX.Channel", $svs, TRUE);
                     $vid = $this->CreateVariable(1,"W", "W", $insID, 4, $W, "DMX.Channel", $svs, TRUE);
+
+                    // Set Position
+                    $vid = IPS_SetPosition($insID, $P);
                     
                     // Generate Switch
                     $vid = $this->CreateVariable(0, $S, "Switch$i", $insID, 0, 0, "~Switch", $svs, FALSE);
@@ -156,8 +160,13 @@
                         }
                         
                     }
+
+                    
+
                 }
             }
+
+            // Global Event Trigger
             $Test = IPS_GetVariableIDByName("Global R", $parent);
             $isEmpty = @IPS_GetObjectIDByIdent("TriggerOnChange".$Test, $parent);
             if(empty($isEmpty)){
@@ -171,6 +180,13 @@
                 $vid = $this->CreateEventTrigger($triggerB);
                 $vid = $this->CreateEventTrigger($triggerW);
             }
+            
+        }
+
+
+
+        private function sortRooms(){
+
         }
 
 
