@@ -23,8 +23,8 @@
             {
                 "label": "Sortierung",
                 "name": "Sort",
-                "width": "20px",
-                "add": 0,
+                "width": "75px",
+                "add": 1,
                 "edit": {
                     "type": "NumberSpinner"
                 }
