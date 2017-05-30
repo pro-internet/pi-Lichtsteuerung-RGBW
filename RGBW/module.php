@@ -110,7 +110,6 @@
                     $B = $array['BChannel'];
                     $W = $array['WChannel'];
                     $S = $array['Name'];
-                    print_r($S);
 
                     $isEmpty = @IPS_GetObjectIDByIdent("R", $insID);
                     if(!empty($isEmpty)){
@@ -118,7 +117,7 @@
                         $GV = IPS_GetVariableIDByName("G",      $insID);
                         $BV = IPS_GetVariableIDByName("B",      $insID);
                         $WV = IPS_GetVariableIDByName("W",      $insID);
-                        $SV = IPS_GetVariableIDByName($S, $insID);
+                        $SV = IPS_GetObjectIDByIdent("Switch$i", $insID); 
                         $EV = IPS_GetEventIDByName("TriggerOnChange",  $insID);
                         IPS_DeleteVariable($RV);
                         IPS_DeleteVariable($GV);
@@ -135,7 +134,7 @@
                     $vid = $this->CreateVariable(1,"W", "W", $insID, 4, $W, "DMX.Channel", $svs, TRUE);
                     
                     // Generate Switch
-                    $vid = $this->CreateVariable(0, $S, $S, $insID, 0, 0, "~Switch", $svs, FALSE);
+                    $vid = $this->CreateVariable(0, $S, "Switch$i", $insID, 0, 0, "~Switch", $svs, FALSE);
                     
                     // Get Switch ID
                     $triggerID = IPS_GetVariableIDByName($S, $insID);
