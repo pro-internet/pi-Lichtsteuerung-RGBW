@@ -89,12 +89,12 @@
             if (is_array($deviceList) || is_object($deviceList)){
                 foreach($deviceList as $i => $list){
 
-                    if(@IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID)) === false){
+                    if(@IPS_GetObjectIDByIdent("device$i", IPS_GetParent($svs)) === false){
                         $insID = IPS_CreateInstance($dummyGUID);	
-                        IPS_SetParent($insID, IPS_GetParent($this->InstanceID));					
+                        IPS_SetParent($insID, IPS_GetParent($svs));					
                     }
                     else{
-                        $insID = IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID));
+                        $insID = IPS_GetObjectIDByIdent("device$i", IPS_GetParent($svs));
                     }
 
                     IPS_SetName($insID, $list->Name);
@@ -145,17 +145,17 @@
                     $vid = $this->CreateEventOn($insID, $triggerID, $hauptInstanz);
 
                     //lösche überschüssige räume
-                    while($i < count(IPS_GetChildrenIDs(IPS_GetParent($this->InstanceID)))){
+                    while($i < count(IPS_GetChildrenIDs(IPS_GetParent($svs)))){
                         $i++;
                         if($i == 0){
                             $i--;
-                            $id = IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID));
+                            $id = IPS_GetObjectIDByIdent("device$i", IPS_GetParent($svs));
                             $this->DeleteObject($id);
                         }
                         
-                        if(@IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID)) !== false)
+                        if(@IPS_GetObjectIDByIdent("device$i", IPS_GetParent($svs)) !== false)
                         {
-                            $id = IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID));
+                            $id = IPS_GetObjectIDByIdent("device$i", IPS_GetParent($svs));
                             $this->DeleteObject($id);
                         }
                         

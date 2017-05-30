@@ -1,7 +1,7 @@
 {
     "elements": [{
         "type": "List",
-        "name": "Lichter",
+        "name": "LichterRGB",
         "caption": "Räume:",
         "rowCount": 8,
         "columnCount": 12,
