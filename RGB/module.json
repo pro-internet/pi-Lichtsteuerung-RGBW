@@ -1,0 +1,13 @@
+{
+    "id": "{0b35aa8c-1104-45aa-abad-4a5463b9aabb}",
+    "name": "Lichtsteuerung RGB",
+    "type": 3,
+    "vendor": "prointernet",
+    "aliases": [
+        "Lichtsteuerung RGB"
+    ],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "DMXRGB"
+}
