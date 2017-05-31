@@ -146,7 +146,7 @@
           $vid = $this->CreateVariable(0, "Status", "Switch", $insID, 0, 0, "~Switch", $svs, FALSE);
 
           // Get Switch ID
-          $triggerID = IPS_GetVariableIDByName("Schalter", $insID);
+          $triggerID = IPS_GetVariableIDByName("Status", $insID);
           $vid = $this->CreateEventOn($insID, $triggerID, $hauptInstanz);
         }
         //lösche überschüssige räume
