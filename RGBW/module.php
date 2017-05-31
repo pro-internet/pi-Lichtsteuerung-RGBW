@@ -143,7 +143,7 @@
           $vid = IPS_SetPosition($insID, $P);
 
           // Generate Switch
-          $vid = $this->CreateVariable(0, "Schalter", "Switch", $insID, 0, 0, "~Switch", $svs, FALSE);
+          $vid = $this->CreateVariable(0, "Status", "Switch", $insID, 0, 0, "~Switch", $svs, FALSE);
 
           // Get Switch ID
           $triggerID = IPS_GetVariableIDByName("Schalter", $insID);
