@@ -59,6 +59,9 @@
     $vid = $this->CreateVariable(1,"Global W","VarID_WWert", $parent, 4, 0, "DMX.Dim", $svs, false);
     $vid = $this->CreateVariable(2, "Global Fade","VarID_FadeWert", $parent, 5, 1, "DMX.Fade", $svs, false);
 
+
+
+
     // Set Trigger Events on Vars
 
   }
@@ -112,13 +115,13 @@
         $S = $array['Name'];
         $P = $array['Sort'];
 
-        $isEmpty = @IPS_GetObjectIDByIdent("R", $insID);
+        /*$isEmpty = @IPS_GetObjectIDByIdent("R", $insID);
         if(!empty($isEmpty)){
           $RV = IPS_GetVariableIDByName("R",      $insID);
           $GV = IPS_GetVariableIDByName("G",      $insID);
           $BV = IPS_GetVariableIDByName("B",      $insID);
           $WV = IPS_GetVariableIDByName("W",      $insID);
-          $SV = IPS_GetObjectIDByIdent("Switch$i", $insID);
+          $SV = IPS_GetObjectIDByIdent("Switch", $insID);
           $EV = IPS_GetEventIDByName("TriggerOnChange",  $insID);
           IPS_DeleteVariable($RV);
           IPS_DeleteVariable($GV);
@@ -126,40 +129,36 @@
           IPS_DeleteVariable($WV);
           IPS_DeleteVariable($SV);
           IPS_DeleteEvent($EV);
-        }
+        } */
 
         // Generate Values
-        $vid = $this->CreateVariable(1,"R", "R", $insID, 1, $R, "DMX.Channel", $svs, TRUE);
-        $vid = $this->CreateVariable(1,"G", "G", $insID, 2, $G, "DMX.Channel", $svs, TRUE);
-        $vid = $this->CreateVariable(1,"B", "B", $insID, 3, $B, "DMX.Channel", $svs, TRUE);
-        $vid = $this->CreateVariable(1,"W", "W", $insID, 4, $W, "DMX.Channel", $svs, TRUE);
 
-        // Set Position
-        $vid = IPS_SetPosition($insID, $P);
+        if(@IPS_GetObjectIDByIdent("R",$insID) === false){
+          $vid = $this->CreateVariable(1,"R", "R", $insID, 1, $R, "DMX.Channel", $svs, TRUE);
+          $vid = $this->CreateVariable(1,"G", "G", $insID, 2, $G, "DMX.Channel", $svs, TRUE);
+          $vid = $this->CreateVariable(1,"B", "B", $insID, 3, $B, "DMX.Channel", $svs, TRUE);
+          $vid = $this->CreateVariable(1,"W", "W", $insID, 4, $W, "DMX.Channel", $svs, TRUE);
 
-        // Generate Switch
-        $vid = $this->CreateVariable(0, $S, "Switch$i", $insID, 0, 0, "~Switch", $svs, FALSE);
+          // Set Position
+          $vid = IPS_SetPosition($insID, $P);
 
-        // Get Switch ID
-        $triggerID = IPS_GetVariableIDByName($S, $insID);
-        $vid = $this->CreateEventOn($insID, $triggerID, $hauptInstanz);
+          // Generate Switch
+          $vid = $this->CreateVariable(0, "Schalter", "Switch", $insID, 0, 0, "~Switch", $svs, FALSE);
 
-        //lösche überschüssige räume
-        while($i < count(IPS_GetChildrenIDs(IPS_GetParent($this->InstanceID)))){
-          $i++;
-          if($i == 0){
-            $i--;
-            $id = IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID));
-            $this->DeleteObject($id);
-          }
-
-          if(@IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID)) !== false)
-          {
-            $id = IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID));
-            $this->DeleteObject($id);
-          }
-
+          // Get Switch ID
+          $triggerID = IPS_GetVariableIDByName("Schalter", $insID);
+          $vid = $this->CreateEventOn($insID, $triggerID, $hauptInstanz);
         }
+        //lösche überschüssige räume
+    			while($i < count(IPS_GetChildrenIDs(IPS_GetParent($this->InstanceID))))
+    			{
+    				$i++;
+    				if(@IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID)) !== false)
+    				{
+    					$id = IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID));
+    					$this->DeleteObject($id);
+    				}
+    			}
 
 
 
